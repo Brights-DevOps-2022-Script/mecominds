@@ -15,7 +15,7 @@ pipeline {
 
         stage('Image Building and push ACR') {                   
             steps {
-                sh 'docker build -t devops2022.azurecr.io/neverindset:$GIT_COMMIT .' 
+                sh 'docker build -t devops2022.azurecr.io/nevermindset:$GIT_COMMIT .' 
                 sh 'docker push devops2022.azurecr.io/nevermindset:$GIT_COMMIT'           
                 sh 'docker rmi devops2022.azurecr.io/nevermindset:$GIT_COMMIT'           
             }
