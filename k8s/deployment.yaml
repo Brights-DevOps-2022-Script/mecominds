@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-deployment
   labels:
     app: nginx         
 spec:
@@ -27,7 +27,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: service
+  name: nginx-service
 spec: 
   selector: 
     app: nginx
@@ -39,7 +39,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress               
 metadata:
-  name: ingress
+  name: nginx-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/rewrite-target: /
