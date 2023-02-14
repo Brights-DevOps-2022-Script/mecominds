@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="de" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>DevOps 2022 Partytime!</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body onmousemove="trackMousePosition(event)">
-        <div class="cursor"></div>
-        <section class="main">
-            <h1> neverMindset</h1>
-        </section>
-        <section class="box">
-            <h2 id="mousePosition">Mouse Position: (0, 0)</h2>
-        </section>
 
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-        <script type="text/javascript">
-            // hier wird die maus getrackt
-            function trackMousePosition(event) {
-              var x = event.clientX;
-              var y = event.clientY;
-              document.getElementById("mousePosition").innerHTML = "Mouse position: (" + x + ", " + y + ")";
+<head>
+    <meta charset="utf-8">
+    <title>DevOps 2022 Partytime!</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-              const parsenumber = JSON.parse(x);
-              console.log(parsenumber);
-            }
-            
-            const cursor = document.querySelector(".cursor");
-            var timeout;
-            
-            // das ist die party maus
-            document.addEventListener("mousemove", (e) =>{
-                let x = e.pageX;
-                let y = e.pageY;
-                
-                cursor.style.top = y + 'px';
-                cursor.style.left = x+ 'px';
-                cursor.style.display = 'block';
-                
-                function mouseStopped() {
-                    cursor.style.display = 'none';
-                }
-                
-                clearTimeout(timeout);
-                timeout = setTimeout(mouseStopped, 1000);
-            });
-            //versteck die party maus
-            document.addEventListener("mouseout", () => {
+<body onmousemove="trackMousePosition(event)">
+    <div class="cursor"></div>
+    <section class="main">
+        <h1> neverMindset</h1>
+    </section>
+    <section class="box">
+        <h2 id="mousePosition">Mouse Position: (0, 0)</h2>
+    </section>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    <script type="text/javascript">
+        // hier wird die maus getrackt
+        function trackMousePosition(event) {
+            var x = event.clientX;
+            var y = event.clientY;
+            document.getElementById("mousePosition").innerHTML = "Mouse position: (" + x + ", " + y + ")";
+
+            const parsenumber = JSON.parse(x);
+            console.log(parsenumber);
+        }
+
+        const cursor = document.querySelector(".cursor");
+        var timeout;
+
+        // das ist die party maus
+        document.addEventListener("mousemove", (e) => {
+            let x = e.pageX;
+            let y = e.pageY;
+
+            cursor.style.top = y + 'px';
+            cursor.style.left = x + 'px';
+            cursor.style.display = 'block';
+
+            function mouseStopped() {
                 cursor.style.display = 'none';
+            }
 
-            });
+            clearTimeout(timeout);
+            timeout = setTimeout(mouseStopped, 1000);
+        });
+        //versteck die party maus
+        document.addEventListener("mouseout", () => {
+            cursor.style.display = 'none';
 
-        </script>
-    </body>
+        });
+
+    </script>
+</body>
+
 </html>
