@@ -13,6 +13,10 @@ spec:
     metadata:
       labels:
         app: nginx
+      annotations:
+        prometheus.io/scrape: 'true'
+        prometheus.io/port: '9113'
+        prometheus.io/scheme: http
     spec:
       containers:
         - name: nginx
@@ -46,6 +50,7 @@ metadata:
       rewrite ^(/mecominds)$ $1/ redirect;
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx-ingress.controller.metrics.enabled: "true"    
 spec:
   ingressClassName: nginx
   tls:
