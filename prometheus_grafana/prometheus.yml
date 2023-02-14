@@ -14,7 +14,7 @@ scrape_configs:
     scrape_interval: 5s
     static_configs:
     - targets: ['devops2022.de:80']
-    metrics_path: mecominds/metrics
+    metrics_path: /
     params:
       a: ['1']
       b: ['2']
