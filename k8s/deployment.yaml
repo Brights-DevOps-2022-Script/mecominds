@@ -44,7 +44,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/configuration-snippet: |
       rewrite ^(/)$ $1/ redirect;
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    #nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/enable-metrics: "true"
     nginx-ingress.controller.metrics.enabled: "true"
     prometheus.io/scrape: "true"
