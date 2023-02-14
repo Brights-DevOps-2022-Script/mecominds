@@ -49,7 +49,7 @@ metadata:
     nginx-ingress.controller.metrics.enabled: "true"
     prometheus.io/scrape: "true"
     prometheus.io/port: "9113"
-    prometheus.io/scheme: http
+    prometheus.io/scheme: https
 spec:
   ingressClassName: nginx
   tls:
