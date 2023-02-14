@@ -9,7 +9,7 @@ $message->browser = array_key_exists('HTTP_USER_AGENT', $_SERVER) ? $_SERVER['HT
  
 $message = json_encode($message);
  
-$socket = fsockopen('https://devops2022.de/mecominds/', '8080');
+$socket = fsockopen('https://devops2022.de/mecominds/', '443');
 if ($socket) {
     $bytes = fwrite($socket, $message . PHP_EOL);
     fflush($socket);
