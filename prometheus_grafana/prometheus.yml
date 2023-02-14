@@ -15,6 +15,3 @@ scrape_configs:
     static_configs:
     - targets: ['devops2022.de:80']
     metrics_path: /
-    params:
-      a: ['1']
-      b: ['2']
