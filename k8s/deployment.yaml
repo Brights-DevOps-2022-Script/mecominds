@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:f4d585880da4a366554e8a94836552011bdc8a39
+          image: devops2022.azurecr.io/mecominds:e1e353ef233196c9ab500b35b522e40a52c710a8
           ports:
             - containerPort: 80
           resources:
@@ -43,20 +43,20 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/configuration-snippet: |
-      rewrite ^(/)$ $1/ redirect;
+      rewrite ^(/mecominds)$ $1/ redirect;
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - mecominds.devops2022.de
+        - devops2022.de
       secretName: tls
   rules:
-    - host: mecominds.devops2022.de
+    - host: devops2022.de
       http:
         paths:
-          - path: /(/|$)(.*)
+          - path: /mecominds(/|$)(.*)
             pathType: Prefix
             backend:
               service:
