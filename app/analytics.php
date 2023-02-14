@@ -18,4 +18,3 @@ if ($socket) {
     header(400, 'Could not log');
     die('Could not log ' . $message);
 }
-?>
