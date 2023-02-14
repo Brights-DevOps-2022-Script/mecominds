@@ -58,6 +58,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: service
+                name: nginx-service
                 port:
                   number: 80
