@@ -13,7 +13,7 @@ scrape_configs:
     scheme: https
     scrape_interval: 5s
     static_configs:
-    - targets: ['devops2022.de/mecominds']
+    - targets: ['devops2022.de/mecominds/']
     metrics_path: /metrics
     params:
       a: ['1']
