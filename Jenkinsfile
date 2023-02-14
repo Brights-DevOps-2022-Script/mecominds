@@ -7,14 +7,9 @@ pipeline {
     
     stages {
         
-        stage('ACR Login') {
-            steps{
-                sh 'docker login devops2022.azurecr.io -u $ACRCreds_USR -p $ACRCreds_PSW'
-            }
-        }
-
-        stage('Image Building and push ACR') {                   
+        stage('BUILD') {                   
             steps {
+                sh 'docker login devops2022.azurecr.io -u $ACRCreds_USR -p $ACRCreds_PSW'
                 sh 'docker build -t devops2022.azurecr.io/nevermindset:$GIT_COMMIT ./app' 
                 sh 'docker push devops2022.azurecr.io/nevermindset:$GIT_COMMIT'           
                 sh 'docker rmi devops2022.azurecr.io/nevermindset:$GIT_COMMIT'           
@@ -22,7 +17,15 @@ pipeline {
 
         }
 
-        stage('Deploy') {
+        stage('TEST') {
+            steps {
+                sh "docker --version"
+                sg "git --version"
+            }
+        }
+                
+
+        stage('DEPLOY') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/neverMindset.git']]])
                 withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
