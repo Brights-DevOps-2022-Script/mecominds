@@ -42,7 +42,9 @@ metadata:
   name: nginx-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      rewrite ^(/neverMindset)$ $1/ redirect;
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
@@ -54,7 +56,7 @@ spec:
     - host: devops2022.de
       http:
         paths:
-          - path: /neverMindset
+          - path: /neverMindset(/|$)(.*)
             pathType: Prefix
             backend:
               service:
