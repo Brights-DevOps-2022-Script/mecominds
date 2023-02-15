@@ -4,9 +4,7 @@ pipeline {
         ACRCreds = credentials('acr_creds')
        
     }
-    
     stages {
-        
         stage('BUILD') {                   
             steps {
                 sh 'docker login devops2022.azurecr.io -u $ACRCreds_USR -p $ACRCreds_PSW'
@@ -22,7 +20,6 @@ pipeline {
                 sh "docker --version"
             }
         }
-                
 
         stage('DEPLOY') {
             steps {
@@ -30,7 +27,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                 sh 'sed -i "s|image:.*|image: devops2022.azurecr.io/mecominds:$GIT_COMMIT|" k8s/deployment.yaml'
                 sh "git add k8s/deployment.yaml"
-                sh "git commit -m 'update deployment'"
+                sh "git commit -m 'update deployment file'"
                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/mecominds.git HEAD:main"
                 }                            
             }
