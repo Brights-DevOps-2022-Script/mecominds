@@ -47,7 +47,6 @@ metadata:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9113"
     prometheus.io/scheme: "https"
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   tls:
@@ -58,7 +57,7 @@ spec:
     - host: mecominds.devops2022.de
       http:
         paths:
-          - path: /.*
+          - path: /
             pathType: Prefix
             backend:
               service:
