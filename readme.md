@@ -1,4 +1,4 @@
-# metrics:
+# metrics
 
 - WEBSITE TRAFFIC
 - TRAFFIC SOURCES
