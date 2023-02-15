@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:196ef6c7c73f8b3ecc47d92d0cd00908554f3c37
+          image: devops2022.azurecr.io/mecominds:1eba196eaa76110242b5804ee06b358af3a7db84
           ports:
             - containerPort: 80
           resources:
@@ -42,14 +42,11 @@ metadata:
   name: nginx-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    #nginx.ingress.kubernetes.io/configuration-snippet: |
-    # rewrite ^(/)$ $1/ redirect;
-    # nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/enable-metrics: "true"
     nginx-ingress.controller.metrics.enabled: "true"
     prometheus.io/scrape: "true"
     prometheus.io/port: "9113"
-    prometheus.io/scheme: https
+    prometheus.io/scheme: "https"
 spec:
   ingressClassName: nginx
   tls:
@@ -60,7 +57,7 @@ spec:
     - host: mecominds.devops2022.de
       http:
         paths:
-          - path: /(/|$)(.*)
+          - path: /
             pathType: Prefix
             backend:
               service:
