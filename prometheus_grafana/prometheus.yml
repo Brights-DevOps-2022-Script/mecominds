@@ -13,6 +13,6 @@ scrape_configs:
     scheme: https
     scrape_interval: 5s
     static_configs:
-    - targets: ['mecominds.devops2022.de:443']
+    - targets: ['mecominds.devops2022.de:9999']
     metrics_path: /metrics              # hier fehlt /metrics --> muss noch in der website implementiert werden
 
