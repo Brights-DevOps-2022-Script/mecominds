@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:06a2b7cd728fe59d54dde7e97befe7d6bac87781
+          image: devops2022.azurecr.io/mecominds:fe8e7ee056a0e03e32ccc817ee3cc4fd4771a9f9
           ports:
             - containerPort: 80
           resources:
@@ -47,6 +47,7 @@ metadata:
     prometheus.io/scrape: "true"
     prometheus.io/port: "9113"
     prometheus.io/scheme: "https"
+    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: nginx
   tls:
@@ -57,7 +58,7 @@ spec:
     - host: mecominds.devops2022.de
       http:
         paths:
-          - path: /
+          - path: /.*
             pathType: Prefix
             backend:
               service:
