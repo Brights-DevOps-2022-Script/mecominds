@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:df1c4cc947753ee7cef417be83e3eaf26cc98523
+          image: devops2022.azurecr.io/mecominds:c3b54b265bb9d9a47b2e654ae86828398197b8a2
           ports:
             - containerPort: 80
           volumeMounts:
@@ -24,7 +24,7 @@ spec:
               name: nginx-config
               subPath: nginx.conf
         - name: nginx-exporter
-          image: "nginx/nginx-prometheus-exporter:latest"
+          image: devops2022.azurecr.io/mecominds:c3b54b265bb9d9a47b2e654ae86828398197b8a2
           args:
             - "-nginx.scrape-uri=https://mecominds.devops2022.de/status"
           ports:
