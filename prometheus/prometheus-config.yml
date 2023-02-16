@@ -11,7 +11,7 @@ data:
       - job_name: mecominds-nginx
         scheme: https
         scrape_interval: 10s
-        metrics_path: "/metrics/"
+        metrics_path: "/"
         static_configs:
         - targets: 
           - mecominds.devops2022.de
