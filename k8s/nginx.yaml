@@ -19,6 +19,13 @@ spec:
           image: devops2022.azurecr.io/mecominds:6d9425d7b4f0ae1696527099503b07c5651d5603
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: nginx-conf
+              mountPath: /etc/nginx
+      volumes:
+        - name: nginx-conf
+          configMap:
+            name: nginx-conf
 ---
 apiVersion: v1
 kind: Service

@@ -5,8 +5,11 @@ metadata:
   namespace: mecominds
 data:
   nginx.conf: |
-    server {
-      location /status {
-        stub_status on;
+    http { 
+     server {
+       location /stub_status {
+         stub_status on;
+         access_log off;
+        }
       }
     }
