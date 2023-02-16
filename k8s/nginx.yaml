@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:3df38884fd3a92602547b7e76ae3bd9f063d1a37
+          image: devops2022.azurecr.io/mecominds:ec8994582b9288eb23fc43fdd550d758ac05907d
           ports:
             - containerPort: 80
           resources:
@@ -41,6 +41,7 @@ kind: Ingress
 metadata:
   name: nginx-ingress
   annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/enable-metrics: "true"
     nginx-ingress.controller.metrics.enabled: "true"
