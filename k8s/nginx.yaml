@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:e44200444f7b0c84f5f7ae215575938a3bd45cba
+          image: devops2022.azurecr.io/mecominds:896949fb5c25b6a0c96799b0b31d20c0c84d789d
           ports:
             - containerPort: 80
           resources:
@@ -32,8 +32,12 @@ spec:
   selector:
     app: nginx
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1

@@ -39,7 +39,6 @@ metadata:
   name: prometheus
   namespace: mecominds
 spec:
-  type: ClusterIP
   selector:
     app: prometheus
   ports:
