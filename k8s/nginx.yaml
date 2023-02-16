@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -19,20 +19,12 @@ spec:
           image: devops2022.azurecr.io/mecominds:5f27d83ce9f9dfa94c89a39f541d76c6256384d4
           ports:
             - containerPort: 80
-          volumeMounts:
-            - mountPath: /etc/nginx/conf.d/nginx.conf
-              name: nginx-config
-              subPath: nginx.conf
         - name: nginx-exporter
           image: nginx/nginx-prometheus-exporter
           args:
-            - "-nginx.scrape-uri=http://localhost/status"
+            - "-nginx.scrape-uri=http://localhost/stub_status"
           ports:
             - containerPort: 9113
-      volumes:
-        - configMap:
-            name: nginx-config
-          name: nginx-config
 ---
 apiVersion: v1
 kind: Service
