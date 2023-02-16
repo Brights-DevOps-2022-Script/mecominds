@@ -9,7 +9,8 @@ data:
     events {
       worker_connections 1024;
     }
-    http { 
+    http {
+      default_type text/css; 
       server {
         location / {
           root   /usr/share/nginx/html;
