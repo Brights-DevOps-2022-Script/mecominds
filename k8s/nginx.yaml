@@ -28,9 +28,7 @@ spec:
           args:
             - "-nginx.scrape-uri=https://mecominds.devops2022.de/status"
           ports:
-            - name: nginx-ex-port
-              containerPort: 9113
-              protocol: TCP
+            - containerPort: 9113
       volumes:
         - configMap:
             name: nginx-config
