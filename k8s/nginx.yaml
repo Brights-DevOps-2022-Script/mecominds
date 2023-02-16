@@ -17,20 +17,12 @@ spec:
       containers:
         - name: nginx
           image: devops2022.azurecr.io/mecominds:b5e98cddbf97682897f18117562b290e3044753f
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/nginx.conf
-              subPath: nginx.conf
           ports:
             - containerPort: 80
           resources:
             limits:
               cpu: 100m
               memory: 256Mi
-      volumes:
-        - name: nginx-config
-          configMap:
-            name: nginx-config
 ---
 apiVersion: v1
 kind: Service
