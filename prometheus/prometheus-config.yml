@@ -12,4 +12,4 @@ data:
         scrape_interval: 5s
         metrics_path: "/metrics"
         static_configs:
-        - targets: ['nginx-prometheus-exporter.mecominds.svc.cluster.local:9113']
+        - targets: ['nginx-service.mecominds.svc.cluster.local:9113']

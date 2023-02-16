@@ -24,10 +24,6 @@ spec:
             - mountPath: /etc/grafana/provisioning/datasources
               name: grafana-datasources
               readOnly: false
-          resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
       volumes:
         - name: grafana-datasources
           configMap:
