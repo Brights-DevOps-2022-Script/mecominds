@@ -21,7 +21,7 @@ pipeline {
                     if (!imageExists) {
                         error("The image ${imageTag} was not found in ${acrLoginServer} (ACR). Pipeline failed.")
                     }
-                    sh "echo \"Image ${imageTag} exists in the ACR ${acrLoginServer}\""
+                    sh "echo \"New image ${imageTag} successfully pushed. It exists now in the ACR ${acrLoginServer}\""
                 }
             }
         }
