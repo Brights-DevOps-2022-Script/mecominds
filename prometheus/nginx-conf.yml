@@ -11,13 +11,14 @@ data:
     }
     http { 
       server {
-        location /metrics {
-          stub_status on;
-          access_log off;
-        }
+        listen 80;
         location / {
           root   /usr/share/nginx/html;
           index  index.html index.htm;
+        }
+        location /metrics {
+          stub_status on;
+          access_log off;
         }
       }
     }
