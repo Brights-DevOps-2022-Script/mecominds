@@ -28,6 +28,8 @@ spec:
             - containerPort: 9113
           args:
             - -nginx.scrape-uri=http://localhost/metrics/
+            - -nginx.stub-status-metrics=true
+            - -nginx.connections-metrics=true
       volumes:
         - name: nginx-conf
           configMap:
