@@ -19,10 +19,22 @@ spec:
           image: devops2022.azurecr.io/mecominds:b5e98cddbf97682897f18117562b290e3044753f
           ports:
             - containerPort: 80
-          resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
+          volumeMounts:
+            - mountPath: /etc/nginx/conf.d/nginx.conf
+              name: nginx-config
+              subPath: nginx.conf
+        - name: nginx-exporter
+          image: "nginx/nginx-prometheus-exporter:latest"
+          args:
+            - "-nginx.scrape-uri=https://mecominds.devops2022.de/status"
+          ports:
+            - name: nginx-ex-port
+              containerPort: 9113
+              protocol: TCP
+      volumes:
+        - configMap:
+            name: nginx-conf
+          name: nginx-conf
 ---
 apiVersion: v1
 kind: Service
