@@ -47,6 +47,9 @@ spec:
     - name: https
       port: 443
       targetPort: 443
+    - name: nginx-prometheus-exporter
+      port: 9113
+      targetPort: 9113
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
