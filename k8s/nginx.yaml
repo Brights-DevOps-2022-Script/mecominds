@@ -37,10 +37,6 @@ spec:
             defaultMode: 420
             name: nginx-config
           name: nginx-config
-          resources:
-          limits:
-            cpu: 100m
-            memory: 256Mi
 ---
 apiVersion: v1
 kind: Service
