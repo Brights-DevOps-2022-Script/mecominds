@@ -24,7 +24,7 @@ spec:
               mountPath: /etc/nginx
         - name: ngin-prometheus-exporter
           image: nginx/nginx-prometheus-exporter
-          port:
+          ports:
             - containerPort: 9113
           args:
             - -nginx.scrape-uri=http://localhost/stub_status
