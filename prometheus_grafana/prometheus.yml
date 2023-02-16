@@ -15,7 +15,5 @@ scrape_configs:
     scrape_timeout: 119s
     static_configs:
     - targets: ['mecominds.devops2022.de:443']
-    metrics_path: /metrics             # hier fehlt /metrics --> muss noch in der website implementiert werden
-    tls_config:
-      insecure_skip_verify: true
+    metrics_path: /metrics/             # hier fehlt /metrics --> muss noch in der website implementiert werden
 
