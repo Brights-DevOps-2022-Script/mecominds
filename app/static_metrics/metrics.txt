@@ -1,0 +1,6 @@
+fridge_temp {
+"name": "fridge_temp",
+"type": "gauge",
+"value": 3.14,
+"unit": "celsius",
+}
