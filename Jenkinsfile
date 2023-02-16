@@ -17,10 +17,11 @@ pipeline {
                  script {
                     def imageTag = "mecominds:$GIT_COMMIT"
                     def acrLoginServer = "devops2022.azurecr.io"
-                    def imageExists = sh(script: "set +x curl -fL devops2022.azurecr.io/v2/manifests/${imageTag}", returnStatus: true) == 0
+                    def imageExists = sh(script: "set +x curl -fL ${acrLoginServer}/v2/manifests/${imageTag}", returnStatus: true) == 0
                     if (!imageExists) {
-                        error("The image ${imageTag} was not found in the Azure Container Registry (ACR). Pipeline failed.")
+                        error("The image ${imageTag} was not found in ${acrLoginServer} (ACR). Pipeline failed.")
                     }
+                    sh "echo \"Image ${imageTag} exists in the ACR ${acrLoginServer}\""
                 }
             }
         }
