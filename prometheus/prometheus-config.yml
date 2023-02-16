@@ -14,4 +14,4 @@ data:
         static_configs:
         - targets: ['mecominds.devops2022.de:443']
           labels:
-            metrics_path: "/metrics"
+            metrics_path: "/metrics/"
