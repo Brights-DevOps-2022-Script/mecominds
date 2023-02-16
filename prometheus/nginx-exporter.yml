@@ -16,7 +16,7 @@ spec:
         - name: nginx-exporter
           image: nginx/nginx-prometheus-exporter:latest
           args:
-            - "-nginx.scrape-uri=https://mecominds.devops2022.de/status"
+            - "-nginx.scrape-uri=http://nginx:80/status"
           ports:
             - name: http-metrics
               containerPort: 9113
