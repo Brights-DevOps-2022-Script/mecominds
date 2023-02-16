@@ -12,6 +12,6 @@ data:
         scheme: https
         scrape_interval: 10s
         static_configs:
-        - targets: ['mecominds.devops2022.de:443']
+        - targets: ['mecominds.devops2022.de']
           labels:
             metrics_path: "/metrics/"
