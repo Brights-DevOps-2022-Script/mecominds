@@ -15,6 +15,7 @@ data:
         - targets: ['nginx-service.mecominds.svc.cluster.local:9113']
       - job_name: mecominds-nginx-static-metrics
         scrape_interval: 5s
-        metrics_path: "/static_mectrics/"
+        scheme: https
+        metrics_path: "/static_metrics/"
         static_configs:
         - targets: ['mecominds.devops2022.de']
