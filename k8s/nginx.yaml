@@ -27,7 +27,7 @@ spec:
           ports:
             - containerPort: 9113
           args:
-            - -nginx.scrape-uri=http://localhost:80/nginx_status
+            - -nginx.scrape-uri=https://mecominds.devops2022.de/nginx_status
       volumes:
         - name: nginx-conf
           configMap:
