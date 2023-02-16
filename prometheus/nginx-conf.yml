@@ -11,7 +11,7 @@ data:
     }
     http { 
       server {
-        location /stub_status {
+        location /metrics {
           stub_status on;
           access_log off;
         }
