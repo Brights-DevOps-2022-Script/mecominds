@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: mecominds
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval:     60s
+    scrape_configs:
+      - job_name: 'nginx'
+        scheme: https
+        scrape_interval: 10s
+        static_configs:
+        - targets: ['mecominds.devops2022.de:443']
+          labels:
+            metrics_path: "/metrics"
