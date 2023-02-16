@@ -2,25 +2,28 @@ pipeline {
     agent any
     environment {
         ACRCreds = credentials('acr_creds')
-       
     }
     stages {
         stage('BUILD') {                   
             steps {
-                sh 'docker login devops2022.azurecr.io -u $ACRCreds_USR -p $ACRCreds_PSW'
-                sh 'docker build -t devops2022.azurecr.io/mecominds:$GIT_COMMIT ./app'
-                sh 'docker push devops2022.azurecr.io/mecominds:$GIT_COMMIT'
-                sh 'docker rmi devops2022.azurecr.io/mecominds:$GIT_COMMIT'
+                sh "docker login devops2022.azurecr.io -u $ACRCreds_USR -p $ACRCreds_PSW"
+                sh "docker build -t devops2022.azurecr.io/mecominds:$GIT_COMMIT ./app"
+                sh "docker push devops2022.azurecr.io/mecominds:$GIT_COMMIT"
+                sh "docker rmi devops2022.azurecr.io/mecominds:$GIT_COMMIT"
             }
-
         }
-
         stage('TEST') {
             steps {
-                sh "docker --version"
+                 script {
+                    def imageTag = "mecominds:$GIT_COMMIT"
+                    def acrLoginServer = "devops2022.azurecr.io"
+                    def imageExists = sh(script: "set +x curl -fL devops2022.azurecr.io/v2/manifests/${imageTag}", returnStatus: true) == 0
+                    if (!imageExists) {
+                        error("The image ${imageTag} was not found in the Azure Container Registry (ACR). Pipeline failed.")
+                    }
+                }
             }
         }
-
         stage('DEPLOY') {
             steps {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '2eb747c4-f19f-4601-ab83-359462e62482',  url: 'https://github.com/Brights-DevOps-2022-Script/mecominds.git']]])
@@ -31,9 +34,7 @@ pipeline {
                 sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/Brights-DevOps-2022-Script/mecominds.git HEAD:main"
                 }                            
             }
-
         }
     }
-
 }    
     
