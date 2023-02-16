@@ -41,6 +41,7 @@ kind: Ingress
 metadata:
   name: nginx-ingress
   annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
     cert-manager.io/cluster-issuer: letsencrypt-production
     nginx.ingress.kubernetes.io/enable-metrics: "true"
     nginx-ingress.controller.metrics.enabled: "true"
