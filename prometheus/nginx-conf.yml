@@ -14,7 +14,7 @@ data:
         location /metrics/ {
           stub_status on;
           access_log off;
-          return 200 "active connections: $connections_active\nserver accepts: $connections_accepted\nserver handled: $connections_handled\n";
+          return 200 "Active connections: $connections_active\nserver accepts handled requests\n$connections_accepted $connections_handled $request_count\nReading: $connections_reading Writing: $connections_writing Waiting: $connections_waiting\n";
         }
         location / {
           root   /usr/share/nginx/html;
