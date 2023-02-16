@@ -61,26 +61,6 @@
 
             });
         </script>
-
-        <h1>Prometheus Metric Example</h1>
-        <p>Number of access: <span id="access"></span></p>
-
-        <script src="https://unpkg.com/prom-client@13.0.0/dist/prometheus.min.js"></script>
-        <script>
-            // Create a Prometheus client instance and configure it to query your Prometheus server
-            const prometheus = new PromClient.Prometheus({
-                url: 'http://prometheus.mecominds.svc.cluster.local:9090'
-            });
-
-            // Define a query to get the total number of HTTP access to the nginx server
-            const query = 'nginx_access';
-
-            // Query Prometheus and update the metric value on the webpage
-            prometheus.query({ query: query }).then((result) => {
-                const count = result.data.result[0].value[1];
-                document.getElementById('access').innerText = count;
-            });
-        </script>
 </body>
 
 </html>
