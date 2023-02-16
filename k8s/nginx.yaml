@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:9d6081e3edf1f4b6698566b443a9d26688ae7ed6
+          image: devops2022.azurecr.io/mecominds:b5e98cddbf97682897f18117562b290e3044753f
           volumeMounts:
             - name: nginx-config
               mountPath: /etc/nginx/nginx.conf
