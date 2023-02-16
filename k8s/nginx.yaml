@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nginx
@@ -16,13 +16,9 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:5df4113f5b2e3a99053f10b4b79050cbf9b4bca4
+          image: devops2022.azurecr.io/mecominds:be7363da816f36f8634859ee92601ab84a7b394c
           ports:
             - containerPort: 80
-          resources:
-            limits:
-              cpu: 100m
-              memory: 256Mi
 ---
 apiVersion: v1
 kind: Service
@@ -32,8 +28,12 @@ spec:
   selector:
     app: nginx
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 443
   type: ClusterIP
 ---
 apiVersion: networking.k8s.io/v1
@@ -42,11 +42,6 @@ metadata:
   name: nginx-ingress
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-production
-    nginx.ingress.kubernetes.io/enable-metrics: "true"
-    nginx-ingress.controller.metrics.enabled: "true"
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "9113"
-    prometheus.io/scheme: "https"
 spec:
   ingressClassName: nginx
   tls:

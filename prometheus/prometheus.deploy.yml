@@ -36,10 +36,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: prometheus
+  name: prometheus-service
   namespace: mecominds
 spec:
-  type: ClusterIP
   selector:
     app: prometheus
   ports:

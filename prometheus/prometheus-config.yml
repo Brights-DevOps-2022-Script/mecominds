@@ -8,10 +8,10 @@ data:
     global:
       scrape_interval:     60s
     scrape_configs:
-      - job_name: 'nginx'
+      - job_name: mecominds-nginx
         scheme: https
         scrape_interval: 10s
+        metrics_path: "/index.html"
         static_configs:
-        - targets: ['mecominds.devops2022.de:443']
-          labels:
-            metrics_path: "/metrics"
+        - targets: 
+          - mecominds.devops2022.de
