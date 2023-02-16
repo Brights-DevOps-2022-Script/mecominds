@@ -24,7 +24,7 @@ spec:
               name: nginx-config
               subPath: nginx.conf
         - name: nginx-exporter
-          image: devops2022.azurecr.io/mecominds:c3b54b265bb9d9a47b2e654ae86828398197b8a2
+          image: "nginx/nginx-prometheus-exporter:latest"
           args:
             - "-nginx.scrape-uri=https://mecominds.devops2022.de/status"
           ports:
