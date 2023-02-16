@@ -13,4 +13,4 @@ data:
         scrape_interval: 5s
         metrics_path: "/metrics"
         static_configs:
-        - targets: ['nginx-prometheus-exporter:9113']
+        - targets: ['10.244.0.141:9113']
