@@ -17,17 +17,10 @@ spec:
       containers:
         - name: nginx
           image: devops2022.azurecr.io/mecominds:9d6081e3edf1f4b6698566b443a9d26688ae7ed6
-          image: devops2022.azurecr.io/mecominds:0fd85f7a6da0c3b1480024e7b0d9b5d7dd4c84ec
-          ports:
-            - containerPort: 80
           volumeMounts:
             - name: nginx-config
               mountPath: /etc/nginx/nginx.conf
               subPath: nginx.conf
-        - name: nginx-exporter
-          image: devops2022.azurecr.io/mecominds:0fd85f7a6da0c3b1480024e7b0d9b5d7dd4c84ec
-          args:
-            - "-nginx.scrape-uri=https://mecominds.devops2022.de/metrics/"
           ports:
             - containerPort: 80
           resources:
