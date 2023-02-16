@@ -19,9 +19,5 @@ data:
           stub_status on;
           access_log off;
         }
-        location = /favicon.ico {
-          log_not_found off;
-          access_log off;
-        }
       }
     }
