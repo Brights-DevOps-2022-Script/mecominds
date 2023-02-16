@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: devops2022.azurecr.io/mecominds:32bf9f3234b8097ef28c7a8caf8e293439d03bbf
+          image: devops2022.azurecr.io/mecominds:f399f3a8aac936a32f9aadd16d96200f3ddfae7b
           ports:
             - containerPort: 80
           volumeMounts:
