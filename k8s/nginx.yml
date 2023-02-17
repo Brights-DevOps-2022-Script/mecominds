@@ -75,13 +75,6 @@ spec:
                 name: nginx-service
                 port:
                   number: 80
-          - path: /grafana
-            pathType: Prefix
-            backend:
-              service:
-                name: grafana-service
-                port:
-                  number: 3000
           - path: /kibana
             pathType: Prefix
             backend:
@@ -89,10 +82,3 @@ spec:
                 name: kibana-kb-http
                 port:
                   number: 5601
-          - path: /prometheus
-            pathType: Prefix
-            backend:
-              service:
-                name: prometheus-service
-                port:
-                  number: 9090
