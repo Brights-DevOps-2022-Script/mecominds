@@ -13,6 +13,13 @@ spec:
       name: grafana
       labels:
         app: grafana
+      annotations:
+        nginx.ingress.kubernetes.io/auth-response-headers: X-Forwarded-Proto,Referer
+        nginx.ingress.kubernetes.io/auth-url: "https://mecominds.devops2022.de/_oauth2/auth"
+        nginx.ingress.kubernetes.io/configuration-snippet: |
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header Referer $http_referer;
+          proxy_cookie_path / /grafana/;
     spec:
       containers:
         - name: grafana
